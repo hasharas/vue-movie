@@ -118,6 +118,7 @@ onBeforeUnmount(() => {
   padding: 20px 50px;
   position: relative;
   z-index: 10;
+  border-bottom: 1px solid #242323ff;
 }
 
 .logo {
