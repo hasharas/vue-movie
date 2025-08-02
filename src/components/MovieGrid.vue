@@ -123,7 +123,7 @@ export default {
   font-weight: 600;
 }
 
-/* Search input wrapper with icon on the left */
+/* Search input  */
 .search-wrapper {
   position: relative;
   width: 31%;

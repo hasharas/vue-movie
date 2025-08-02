@@ -22,7 +22,6 @@
       </div>
     </div>
 
-    <!-- Full-width HR -->
     <hr class="hr" />
 
     <!-- Bottom Section -->
@@ -116,7 +115,6 @@ export default {
   filter: brightness(0) invert(1);
 }
 
-/* Full-width HR */
 .hr {
   width: 100%;
   border: none;
@@ -145,6 +143,7 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     gap: 30px;
+    padding: 0 20px;
   }
 
   .social-follow {
@@ -158,6 +157,7 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
+    padding: 0 20px;
   }
 }
 

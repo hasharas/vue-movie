@@ -157,7 +157,7 @@ export default {
   flex-direction: column;
 }
 
-/* Labels above inputs */
+
 .form-group label {
   margin-bottom: 6px;
   font-weight: 600;
@@ -172,7 +172,7 @@ textarea {
   border: 1px solid #999;
   border-radius: 4px;
   font-size: 16px;
-  background: #666; /* gray background */
+  background: #666;
   color: #fff;
 }
 
