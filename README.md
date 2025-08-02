@@ -97,7 +97,7 @@ package.json
 
 ```bash
 git clone https://github.com/hasharas/vue-movie
-cd your-repo-name
+cd repo-name
 ```
 
 ### 2️⃣ Install Dependencies
@@ -133,5 +133,6 @@ This project is licensed under the MIT License.
 ## 👨‍💻 Author
 
 - **Your Name**
-- GitHub: https://github.com/hasharas/vue-movie
+- GitHub: https://github.com/hasharas
 - Email: hasharamsankalpam@gmail.com
+- LinkedIn : https://www.linkedin.com/in/hashara-sankalpa/
