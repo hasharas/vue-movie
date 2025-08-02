@@ -1,18 +1,31 @@
 <template>
   <section class="movie-grid">
     <div class="container">
-      <h2 class="title">Collect your favourites</h2>
-      <input
-        type="text"
-        placeholder="Search title and add to grid"
-        v-model="searchQuery"
-        @input="searchMovies"
-        class="search"
-      />
+      <!-- Top bar with title and search -->
+      <div class="top-bar">
+        <h2 class="title">Collect your favourites</h2>
+        <div class="search-wrapper">
+          <img :src="searchIcon" alt="Search" class="search-icon-left" />
+          <input
+            type="text"
+            placeholder="Search title and add to grid"
+            v-model="searchQuery"
+            @input="searchMovies"
+            class="search"
+          />
+        </div>
+      </div>
 
+      <hr class="hr" />
+
+      <!-- Movies Grid -->
       <div class="movies">
         <div v-for="(movie, index) in movies" :key="index" class="movie-card">
-          <button class="close" @click="removeMovie(index)">✖</button>
+          <button class="close" @click="removeMovie(index)">
+            <span class="close-icon-bg">
+              <img :src="closeIcon" alt="Close" />
+            </span>
+          </button>
           <img :src="movie.image?.medium || fallbackImage" alt="movie poster" />
           <h3>{{ movie.name }}</h3>
           <p v-html="movie.summary || 'No description available.'"></p>
@@ -23,16 +36,20 @@
 </template>
 
 <script>
+import searchIcon from "@/assets/Icons/Search White.svg";
+import closeIcon from "@/assets/Icons/Close Grey.svg";
+
 export default {
   data() {
     return {
       searchQuery: "",
       movies: [],
       fallbackImage: "https://via.placeholder.com/210x295?text=No+Image",
+      searchIcon,
+      closeIcon,
     };
   },
   mounted() {
-    // Optional: load 3 initial movies
     this.initialMovies(["batman", "spiderman", "wild"]);
   },
   methods: {
@@ -53,7 +70,6 @@ export default {
       const data = await res.json();
       if (data.length) {
         const newMovie = data[0].show;
-        // Avoid duplicates (by ID)
         if (!this.movies.find((m) => m.id === newMovie.id)) {
           this.movies.push(newMovie);
         }
@@ -68,36 +84,79 @@ export default {
 
 <style scoped>
 .movie-grid {
-  background: #fff;
+  background-color: #100f0fff;
   padding: 60px 20px;
-  background-color: #242424ff;
+  color: white;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 50px;
+}
+
+.hr {
+  border: none;
+  height: 2px;
+  background-color: #474747ff;
+  margin: 20px 0;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  gap: 20px;
 }
 
 .title {
   font-size: 30px;
-  text-align: center;
-  margin-bottom: 20px;
+  margin: 0;
+  flex: 1;
+  min-width: 200px;
+  font-weight: 600;
 }
 
-.search {
-  display: block;
-  margin: 0 auto 40px auto;
-  padding: 10px;
-  width: 300px;
+/* Search input wrapper with icon on the left */
+.search-wrapper {
+  position: relative;
+  width: 31%;
+  max-width: 100%;
+}
+
+.search-wrapper input.search {
+  padding: 10px 10px 10px 35px;
   font-size: 16px;
+  width: 100%;
 }
 
+.search-icon-left {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+}
+
+/* Movies grid */
 .movies {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   gap: 30px;
 }
 
 .movie-card {
-  background: #474747ff;
-  width: 250px;
+  background: #262626ff;
+  width: 31%;
   position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .movie-card img {
@@ -117,28 +176,64 @@ export default {
   padding: 0 15px;
   margin-bottom: 15px;
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* Limit to 3 lines */
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
+/* Close icon with gray background */
 .close {
   position: absolute;
   top: 8px;
   right: 8px;
-  border: none;
   background: transparent;
-  font-size: 18px;
+  border: none;
   cursor: pointer;
-  color: red;
+  padding: 0;
 }
 
-/* Responsive */
-@media screen and (max-width: 768px) {
-  .movies {
+.close-icon-bg {
+  background-color: #100f0fff;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-icon-bg img {
+  width: 12px;
+  height: 12px;
+}
+
+/* Tablet */
+@media screen and (max-width: 992px) {
+  .movie-card {
+    width: 47%;
+  }
+
+  .top-bar {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
+  }
+
+  .search-wrapper {
+    width: 100%;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 600px) {
+  .movie-card {
+    width: 100%;
+  }
+
+  .movies {
+    justify-content: center;
+  }
+
+  .title {
+    text-align: center;
   }
 }
 </style>
