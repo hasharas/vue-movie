@@ -4,10 +4,12 @@
     <Hero />
     <Introduction />
     <MovieGrid />
+    <ContactMap />
   </div>
 </template>
 
 <script>
+import ContactMap from "./components/ContactMap.vue";
 import Header from "./components/Header.vue";
 import Hero from "./components/Hero.vue";
 import Introduction from "./components/Introduction.vue";
@@ -19,6 +21,7 @@ export default {
     Hero,
     Introduction,
     MovieGrid,
+    ContactMap,
   },
 };
 </script>

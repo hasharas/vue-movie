@@ -27,6 +27,9 @@
             </span>
           </button>
           <img :src="movie.image?.medium || fallbackImage" alt="movie poster" />
+
+<!--  <img :src="batMen" alt="Batman" v-if="movie.name === 'Batman'" />  -->
+
           <h3>{{ movie.name }}</h3>
           <p v-html="movie.summary || 'No description available.'"></p>
         </div>
@@ -38,6 +41,7 @@
 <script>
 import searchIcon from "@/assets/Icons/Search White.svg";
 import closeIcon from "@/assets/Icons/Close Grey.svg";
+// import batMen from "@/assets/Images/Batman.jpg";
 
 export default {
   data() {
@@ -84,21 +88,21 @@ export default {
 
 <style scoped>
 .movie-grid {
-  background-color: #100f0fff;
+  background-color: #191919ff;
   padding: 60px 20px;
   color: white;
 }
 
 .container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 50px;
+  max-width: auto;
+  margin: 0px;
+  padding: 0 50px ;
 }
 
 .hr {
   border: none;
   height: 2px;
-  background-color: #474747ff;
+  background-color: #d3d3d3ff;
   margin: 20px 0;
 }
 
@@ -112,7 +116,7 @@ export default {
 }
 
 .title {
-  font-size: 30px;
+  font-size: 25px;
   margin: 0;
   flex: 1;
   min-width: 200px;
@@ -142,12 +146,23 @@ export default {
   pointer-events: none;
 }
 
+.search {
+  background-color: #191919ff;
+  color: white;
+  border: 1px solid #dededeff;
+  border-radius: 4px;
+  width: 100%;
+  padding: 10px;
+  font-size: 12px;
+  font-weight: 200;
+}
+
 /* Movies grid */
 .movies {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 30px;
+  gap: 40px;
 }
 
 .movie-card {
@@ -182,7 +197,7 @@ export default {
   text-overflow: ellipsis;
 }
 
-/* Close icon with gray background */
+/* Close icon  */
 .close {
   position: absolute;
   top: 8px;
@@ -194,7 +209,7 @@ export default {
 }
 
 .close-icon-bg {
-  background-color: #100f0fff;
+  background-color: #191919ff;
   padding: 15px;
   display: flex;
   align-items: center;
