@@ -2,7 +2,7 @@
   <section class="contact-section">
     <div class="container">
       <h2 class="title-left">How to reach us</h2>
-      <p class="p-title"> Lorem ipsum dolor sit amet, consetetur.</p>
+      <p class="p-title">Lorem ipsum dolor sit amet, consetetur.</p>
 
       <div class="split-wrapper">
         <!-- Contact Form -->
@@ -10,35 +10,20 @@
           <div class="form-row">
             <div class="form-group">
               <label for="firstName">First Name *</label>
-              <input
-                id="firstName"
-                type="text"
-                v-model="form.firstName"
-                :class="{ error: errors.firstName }"
-              />
+              <input id="firstName" type="text" v-model="form.firstName" :class="{ error: errors.firstName }" />
               <span v-if="errors.firstName" class="error-msg">First name is required</span>
             </div>
 
             <div class="form-group">
               <label for="lastName">Last Name *</label>
-              <input
-                id="lastName"
-                type="text"
-                v-model="form.lastName"
-                :class="{ error: errors.lastName }"
-              />
+              <input id="lastName" type="text" v-model="form.lastName" :class="{ error: errors.lastName }" />
               <span v-if="errors.lastName" class="error-msg">Last name is required</span>
             </div>
           </div>
 
           <div class="form-group">
             <label for="email">Email *</label>
-            <input
-              id="email"
-              type="email"
-              v-model="form.email"
-              :class="{ error: errors.email }"
-            />
+            <input id="email" type="email" v-model="form.email" :class="{ error: errors.email }" />
             <span v-if="errors.email" class="error-msg">Valid email is required</span>
           </div>
 
@@ -48,19 +33,15 @@
           </div>
 
           <div class="form-group">
-            <label for="message">Message </label>
-            <textarea
-              id="message"
-              v-model="form.message"
-              :class="{ error: errors.message }"
-            ></textarea>
+            <label for="message">Message</label>
+            <textarea id="message" v-model="form.message" :class="{ error: errors.message }"></textarea>
             <span v-if="errors.message" class="error-msg">Message is required</span>
           </div>
 
-          <span class="checkmark"> * required field</span>
+          <span class="checkmark">* required field</span>
+
           <div class="form-check-row">
             <input type="checkbox" v-model="form.terms" id="terms" />
-            
             <label for="terms">I agree to the <u>Terms & Conditions</u></label>
           </div>
 
@@ -79,46 +60,16 @@
             allowfullscreen=""
             loading="lazy"
           ></iframe>
-          <img :src="mapIcon" alt="Map Pin" class="map-pin-overlay" />
         </div>
-      </div>
-
-      <!-- Footer Info -->
-      <div class="footer-info">
-        <div class="address-block">
-          <img :src="mapIcon" alt="Map Pin" class="map-pin" />
-          <p>
-            C. Salvador de Madariaga, 1<br />
-            28027 Madrid, Spain
-          </p>
-        </div>
-
-        <div class="social-icons">
-          <img :src="twitterIcon" alt="Twitter" />
-          <img :src="youtubeIcon" alt="YouTube" />
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p class="copyright">
-          Copyright © {{ currentYear }} Amadeus Hotels. All rights reserved.
-        </p>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import Twitter from '@/assets/Icons/Twitter White.svg'
-import Youtube from '@/assets/Icons/Youtube White.svg'
-import MapPin from '@/assets/Icons/Map Pin Gold.svg'
-
 export default {
   data() {
     return {
-      twitterIcon: Twitter,
-      youtubeIcon: Youtube,
-      mapIcon: MapPin,
       form: {
         firstName: '',
         lastName: '',
@@ -128,11 +79,6 @@ export default {
         terms: false
       },
       errors: {}
-    }
-  },
-  computed: {
-    currentYear() {
-      return new Date().getFullYear()
     }
   },
   methods: {
@@ -156,11 +102,12 @@ export default {
 }
 </script>
 
+
 <style scoped>
 .contact-section {
   background-color: #000;
   color: #fff;
-  padding: 60px 20px 0;
+  padding: 60px 20px 50px;
 }
 
 .container {

@@ -5,11 +5,13 @@
     <Introduction />
     <MovieGrid />
     <ContactMap />
+    <Footer />
   </div>
 </template>
 
 <script>
 import ContactMap from "./components/ContactMap.vue";
+import Footer from "./components/Footer.vue";
 import Header from "./components/Header.vue";
 import Hero from "./components/Hero.vue";
 import Introduction from "./components/Introduction.vue";
@@ -22,6 +24,7 @@ export default {
     Introduction,
     MovieGrid,
     ContactMap,
+    Footer
   },
 };
 </script>
