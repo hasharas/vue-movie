@@ -47,10 +47,10 @@ A fully responsive movie-themed website built using **Vue.js**, **HTML5**, and *
 ### E. Contact & Map
 
 - 📄 Form Fields:
-  - First Name *(required)*
-  - Last Name *(required)*
-  - Email *(required, must be valid)*
-  - Message *(required)*
+  - First Name _(required)_
+  - Last Name _(required)_
+  - Email _(required, must be valid)_
+  - Message _(required)_
 - ✅ JavaScript form validation with red border + error messages
 - 📍 Embedded Google Map: [Amadeus HQ](https://goo.gl/maps/5sW9xsCNvByPnxXE9)
 - 💬 Optional: Alert on submission showing form data (no DB/email)
@@ -81,7 +81,7 @@ A fully responsive movie-themed website built using **Vue.js**, **HTML5**, and *
 /public              # Static files
 /src
   /assets            # Images, videos
-  /components        # Vue components (Header, Footer, MovieCard, etc.)
+  /components        # Vue components
    App.vue
   main.js
 README.md
