@@ -61,15 +61,11 @@
         <img :src="closeIcon" alt="Close Icon" />
       </button>
       <ul>
-        <li v-if="screenSize === 'mobile'"><a href="#">HOME</a></li>
-        <li v-if="screenSize === 'mobile'"><a href="#">OUR SCREENS</a></li>
-        <li v-if="screenSize === 'mobile'"><a href="#">SCHEDULE</a></li>
-        <li v-if="screenSize === 'mobile'">
-          <a href="#" class="active">MOVIE LIBRARY</a>
-        </li>
-        <li v-if="screenSize !== 'desktop'">
-          <a href="#">LOCATION & CONTACT</a>
-        </li>
+        <li class="only-mobile"><a href="#">HOME</a></li>
+        <li class="only-mobile"><a href="#">OUR SCREENS</a></li>
+        <li class="only-mobile"><a href="#">SCHEDULE</a></li>
+        <li class="only-mobile"><a href="#" class="active">MOVIE LIBRARY</a></li>
+        <li class="not-desktop"><a href="#">LOCATION & CONTACT</a></li>
         <li><a href="#">GALLERY</a></li>
       </ul>
     </aside>
@@ -77,13 +73,12 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from "vue";
+import { ref } from "vue";
 import logo from "@/assets/Logos/Logo White.svg";
 import menuIcon from "@/assets/Icons/Menu White.svg";
 import closeIcon from "@/assets/Icons/Close White.svg";
 
 const isSideOpen = ref(false);
-const screenSize = ref("desktop");
 
 function toggleSideMenu() {
   isSideOpen.value = !isSideOpen.value;
@@ -91,21 +86,6 @@ function toggleSideMenu() {
 function closeSideMenu() {
   isSideOpen.value = false;
 }
-
-function checkScreenSize() {
-  const width = window.innerWidth;
-  if (width <= 600) screenSize.value = "mobile";
-  else if (width <= 900) screenSize.value = "tablet";
-  else screenSize.value = "desktop";
-}
-
-onMounted(() => {
-  checkScreenSize();
-  window.addEventListener("resize", checkScreenSize);
-});
-onBeforeUnmount(() => {
-  window.removeEventListener("resize", checkScreenSize);
-});
 </script>
 
 <style scoped>
@@ -156,7 +136,6 @@ onBeforeUnmount(() => {
   margin-left: 10px;
   padding: 0;
 }
-
 .hamburger-inside img {
   width: 20px;
   vertical-align: middle;
@@ -227,7 +206,6 @@ onBeforeUnmount(() => {
   z-index: 1000;
   overflow-y: auto;
 }
-
 .side-drawer-open {
   right: 0;
 }
@@ -237,18 +215,15 @@ onBeforeUnmount(() => {
   padding: 0;
   margin-top: 40px;
 }
-
 .side-drawer li {
   margin-bottom: 20px;
 }
-
 .side-drawer a {
   color: white;
   font-size: 16px;
   text-decoration: none;
   letter-spacing: 1px;
 }
-
 .side-drawer a.active {
   font-weight: bold;
   text-decoration: underline;
@@ -263,8 +238,27 @@ onBeforeUnmount(() => {
   border: none;
   cursor: pointer;
 }
-
 .close-btn img {
   width: 28px;
+}
+
+/* Responsive */
+.only-mobile {
+  display: none;
+}
+.not-desktop {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .only-mobile {
+    display: block;
+  }
+}
+
+@media (max-width: 900px) {
+  .not-desktop {
+    display: block;
+  }
 }
 </style>
